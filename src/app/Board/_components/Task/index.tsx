@@ -67,7 +67,22 @@ export default function Task(
                 }
                 {
                   priority &&
-                  <TaskPriority priority={priority} />
+                  <Tooltip
+                    title={() => {
+                      switch (priority) {
+                        case 1:
+                          return 'Prioridade Baixa'
+                        case 2:
+                          return 'Prioridade moderada'
+                        case 3:
+                          return 'Prioridade alta'
+                        case 4:
+                          return 'Prioridade urgente!'
+                      }
+                    }}
+                  >
+                    <TaskPriority priority={priority} />
+                  </Tooltip>
                 }
               </TaskHeader>
             }
