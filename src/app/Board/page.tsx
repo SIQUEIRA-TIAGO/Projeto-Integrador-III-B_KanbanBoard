@@ -13,7 +13,6 @@ import {
     ProjectTitle
 } from "./wind";
 import { ITask } from "./_components/Task/types";
-import { v4 } from "uuid";
 import { Button } from "antd";
 import TaskModal from "./_components/TaskModal";
 
@@ -25,8 +24,6 @@ export default function Board() {
     const [done, setDone] = useState<ITask[]>([])
 
     const onDragEnd = ({ destination, source, draggableId, }: DropResult) => {
-        if (destination?.droppableId === source.droppableId) return
-
         const task = [...toDo, ...doing, ...done]
             .find(el => el.id === draggableId)
 
@@ -45,13 +42,28 @@ export default function Board() {
         if (!task) return
         switch (destination?.droppableId) {
             case '1':
-                setToDo((prev) => [...prev, task])
+                setToDo((prev) => {
+                    const newList = [...prev]
+                    newList.splice(destination.index, 0, task)
+
+                    return newList
+                })
                 break;
             case '2':
-                setDoing((prev) => [...prev, task])
+                setDoing((prev) => {
+                    const newList = [...prev]
+                    newList.splice(destination.index, 0, task)
+
+                    return newList
+                })
                 break;
             case '3':
-                setDone((prev) => [...prev, task])
+                setDone((prev) => {
+                    const newList = [...prev]
+                    newList.splice(destination.index, 0, task)
+
+                    return newList
+                })
                 break;
         }
     }
