@@ -1,9 +1,12 @@
 'use client'
-
 import React, { useState } from "react";
+
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
+import type { ITask } from "@/app/Board/_components/Task/types";
+import TaskModal from "@/app/Board/_components/TaskModal";
+import Column from "@/app/Board/_components/Column";
 import { FaPlus as PlusIcon } from "react-icons/fa";
-import Column from "./_components/Column";
+import { Button } from "antd";
 import {
     KanbanArea,
     KanbanBoard,
@@ -11,10 +14,7 @@ import {
     MainContainer,
     PageTitle,
     ProjectTitle
-} from "./wind";
-import { ITask } from "./_components/Task/types";
-import { Button } from "antd";
-import TaskModal from "./_components/TaskModal";
+} from "@/app/Board/wind";
 
 export default function Board() {
     const [openNewTaskModal, setOpenNewTaskModal] = useState<boolean>(false)

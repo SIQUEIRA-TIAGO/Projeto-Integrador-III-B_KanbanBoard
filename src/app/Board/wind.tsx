@@ -1,6 +1,6 @@
 'use client'
 
-import React, { PropsWithChildren } from "react"
+import React, { type PropsWithChildren } from "react"
 
 export const MainContainer = (
     props: PropsWithChildren<JSX.IntrinsicElements['main']>

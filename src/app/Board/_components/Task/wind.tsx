@@ -2,7 +2,7 @@
 
 import React, {
     type ForwardedRef,
-    PropsWithChildren,
+    type PropsWithChildren,
     useEffect,
     useRef,
     forwardRef
@@ -43,6 +43,18 @@ export const TaskDeadLine = (
 ): JSX.Element => {
     return <div
         className='flex items-center text-sm gap-2 font-medium'
+        {...props}
+    />
+}
+
+export const TaskDescription = (
+    props: PropsWithChildren<JSX.IntrinsicElements['div']>
+): JSX.Element => {
+    return <p
+        className='whitespace-break-spaces'
+        style={{
+            overflowWrap: 'anywhere'
+        }}
         {...props}
     />
 }
@@ -101,6 +113,18 @@ export const TaskPriority = (
 
     return <div
         className='w-full h-4 rounded'
+        title={(() => {
+            switch (priority) {
+                case 1:
+                    return 'Prioridade Baixa'
+                case 2:
+                    return 'Prioridade Moderada'
+                case 3:
+                    return 'Prioridade Alta'
+                case 4:
+                    return 'Prioridade Urgente'
+            }
+        })()}
         ref={divRef}
         {...props}
     />

@@ -1,12 +1,19 @@
 'use client'
-
 import React, { useState } from 'react'
-import { Avatar, Tooltip } from 'antd'
+
+import type { ITaskComponent } from '@/app/Board/_components/Task/types';
 import { FaCalendarDay as DateIcon } from "react-icons/fa6";
-import { TaskContainer, TaskDeadLine, TaskHeader, TaskPriority } from './wind';
+import TaskModal from '@/app/Board/_components/TaskModal';
 import { Draggable } from 'react-beautiful-dnd';
-import { ITask } from './types';
-import TaskModal from '../TaskModal';
+import {
+  TaskContainer,
+  TaskDeadLine,
+  TaskDescription,
+  TaskHeader,
+  TaskPriority
+} from '@/app/Board/_components/Task/wind';
+import { Avatar, Tooltip } from 'antd'
+
 
 export default function Task(
   {
@@ -14,12 +21,7 @@ export default function Task(
     index,
     handleUpdateTask,
     handleDeleteTask
-  }: {
-    task: ITask
-    index: number
-    handleUpdateTask?: (task: ITask, index: number) => void
-    handleDeleteTask?: (index: number) => void
-  }
+  }: ITaskComponent
 ) {
   const {
     id,
@@ -71,9 +73,9 @@ export default function Task(
                 }
               </TaskHeader>
             }
-            <p>
+            <TaskDescription>
               {description}
-            </p>
+            </TaskDescription>
             {/* @ts-ignore */}
             {provided.placeholder}
           </TaskContainer >

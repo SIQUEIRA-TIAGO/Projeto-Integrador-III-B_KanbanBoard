@@ -1,12 +1,27 @@
 'use client'
+import React, { type ChangeEvent } from 'react'
 
-import { Button, ConfigProvider, DatePicker, Form, FormProps, Input, Modal, Select } from 'antd';
-import React, { type ChangeEvent, Dispatch, SetStateAction } from 'react'
-import { ITask } from '../Task/types';
-import { OptionContainer, OptionPriorityColor } from './wind';
+import { ITask } from '@/app/Board/_components/Task/types';
+import type {
+    ITaskModalComponent
+} from '@/app/Board/_components/TaskModal/types';
+import {
+    OptionContainer,
+    OptionPriorityColor
+} from '@/app/Board/_components/TaskModal/wind';
 import locale from 'antd/locale/pt_BR';
 import { v4 } from 'uuid';
 import dayjs from 'dayjs';
+import {
+    Button,
+    ConfigProvider,
+    DatePicker,
+    Form,
+    FormProps,
+    Input,
+    Modal,
+    Select
+} from 'antd';
 
 export default function TaskModal(
     {
@@ -17,15 +32,7 @@ export default function TaskModal(
         index,
         taskToUpdate,
         handleDeleteTask
-    }: {
-        open: boolean
-        setOpen: Dispatch<SetStateAction<boolean>>
-        handleCreateTask?: (task: ITask) => void
-        handleUpdateTask?: (task: ITask, index: number) => void
-        handleDeleteTask?: (index: number) => void
-        taskToUpdate?: ITask
-        index?: number
-    }
+    }: ITaskModalComponent
 ) {
 
     const [form] = Form.useForm<ITask>();
