@@ -20,7 +20,7 @@ export const TaskContainer = forwardRef((
     return (
         <div
             ref={ref}
-            className='rounded-md p-5 border bg-white flex flex-col gap-4'
+            className='rounded-md p-5 border bg-[#1f1f1f] flex flex-col gap-4'
             style={{
                 opacity: isDragging ? '0.50' : '1'
             }}
@@ -42,7 +42,7 @@ export const TaskDeadLine = (
     props: PropsWithChildren<JSX.IntrinsicElements['div']>
 ): JSX.Element => {
     return <div
-        className='flex items-center text-sm gap-2 font-medium'
+        className='flex items-center text-sm gap-2 font-medium text-gray-400'
         {...props}
     />
 }
@@ -51,7 +51,7 @@ export const TaskDescription = (
     props: PropsWithChildren<JSX.IntrinsicElements['div']>
 ): JSX.Element => {
     return <p
-        className='whitespace-break-spaces'
+        className='whitespace-break-spaces text-gray-400'
         style={{
             overflowWrap: 'anywhere'
         }}

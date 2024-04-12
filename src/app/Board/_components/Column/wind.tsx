@@ -34,7 +34,7 @@ export const ColumnTaskList = forwardRef((
     return (
         <div
             ref={ref}
-            className='h-full h-[60vh] overflow-auto flex flex-col gap-3 p-3 rounded-lg bg-gradient-to-bl from-[#8e9eab] to-[#eef2f3] border-4 border-[#243B55]'
+            className='h-[60vh] overflow-auto flex flex-col gap-3 p-3 rounded-lg border shadow-md'
             {...props}
         />
     );
