@@ -34,8 +34,11 @@ export default function Board() {
         const _doing = localStorage.getItem('doing')
         if (_doing) setDoing(JSON.parse(_doing))
 
-        const _Done = localStorage.getItem('Done')
-        if (_Done) setDone(JSON.parse(_Done))
+        const _done = localStorage.getItem('done')
+        if (_done) setDone(JSON.parse(_done))
+
+        const _projectTitle = localStorage.getItem('projectTitle')
+        if (_projectTitle) setProjectTitle(_projectTitle)
     }, [])
 
     useEffect(() => {
@@ -49,6 +52,10 @@ export default function Board() {
     useEffect(() => {
         localStorage.setItem('done', JSON.stringify(done))
     }, [done])
+
+    useEffect(() => {
+        localStorage.setItem('projectTitle', projectTitle)
+    }, [projectTitle])
 
     const onDragEnd = ({ destination, source, draggableId, }: DropResult) => {
         const task = [...toDo, ...doing, ...done]

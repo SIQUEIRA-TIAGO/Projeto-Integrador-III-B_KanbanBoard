@@ -1,4 +1,4 @@
-import type { ITask } from "@/app/Board/_components/Task/types"
+import type { ITask } from "@/app/board/_components/Task/types"
 import type { Dispatch, SetStateAction } from "react"
 
 export interface ITaskModalComponent {
