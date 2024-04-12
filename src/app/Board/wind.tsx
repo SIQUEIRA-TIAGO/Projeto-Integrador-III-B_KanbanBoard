@@ -1,12 +1,13 @@
 'use client'
 
 import React, { type PropsWithChildren } from "react"
+import { josefin } from "../_components/fonts";
 
 export const MainContainer = (
     props: PropsWithChildren<JSX.IntrinsicElements['main']>
 ): JSX.Element => {
     return <main
-        className="min-h-screen w-full bg-gradient-to-tr from-[#141e30] to-[#243b55]"
+        className="min-h-screen w-full"
         {...props}
     />
 }
@@ -15,7 +16,7 @@ export const PageTitle = (
     props: PropsWithChildren<JSX.IntrinsicElements['h1']>
 ): JSX.Element => {
     return <h1
-        className="p-10 text-3xl font-bold text-white text-center"
+        className={`${josefin.className} text-3xl font-semibold antialiased flex justify-start items-center`}
         {...props}
     />
 }
@@ -41,7 +42,7 @@ export const KanbanBoard = (
 export const ProjectTitle = (
     props: PropsWithChildren<JSX.IntrinsicElements['h3']>
 ): JSX.Element => {
-    return <h3 className="text-2xl font-bold" {...props} />
+    return <h3 className="text-2xl font-bold h-12 flex justify-start items-center" {...props} />
 }
 
 export const KanbanColumnsArea = (

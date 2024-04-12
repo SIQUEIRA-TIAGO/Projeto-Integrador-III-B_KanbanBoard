@@ -53,7 +53,7 @@ export default function Task(
                     {
                       member &&
                       <Tooltip title={member}>
-                        <Avatar shape='square' size='small'>
+                        <Avatar className='bg-gray-400 text-[#1f1f1f]' shape='square' size='small'>
                           {member.slice(0, 1).toUpperCase()}
                         </Avatar>
                       </Tooltip>

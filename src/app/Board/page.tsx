@@ -6,7 +6,9 @@ import type { ITask } from "@/app/Board/_components/Task/types";
 import TaskModal from "@/app/Board/_components/TaskModal";
 import Column from "@/app/Board/_components/Column";
 import { FaPlus as PlusIcon } from "react-icons/fa";
-import { Button } from "antd";
+import { Button, Input } from "antd";
+import { EditOutlined, CheckOutlined } from "@ant-design/icons"
+import { FloatButton } from 'antd';
 import {
     KanbanArea,
     KanbanBoard,
@@ -18,6 +20,8 @@ import {
 
 export default function Board() {
     const [openNewTaskModal, setOpenNewTaskModal] = useState<boolean>(false)
+    const [isEditable, setIsEditable] = useState<boolean>(false)
+    const [projectTitle, setProjectTitle] = useState<string>("Nome do projeto");
 
     const [toDo, setToDo] = useState<ITask[]>([])
     const [doing, setDoing] = useState<ITask[]>([])
@@ -67,22 +71,44 @@ export default function Board() {
                 break;
         }
     }
-
+    
     const handleCreateTask = (task: ITask) => {
         setToDo(prev => [...prev, task])
     }
 
+    const newProject = () => {
+        setDoing([])
+        setDone([])
+        setToDo([])
+        setIsEditable(false)
+        setProjectTitle('Novo projeto')
+    }
+
     return (
         <MainContainer>
-            <PageTitle>
-                Quadro Kanban
-            </PageTitle>
+            <div className="w-full border shadow-sm flex justify-between items-center p-8">
+                <PageTitle>
+                    TaskFlow
+                </PageTitle>
+                <Button onClick={() => newProject()} className="w-32 h-10 font-bold" type="primary">
+                    Novo projeto
+                </Button>
+            </div>
             <KanbanArea>
                 <DragDropContext onDragEnd={onDragEnd}>
                     <KanbanBoard>
-                        <ProjectTitle>
-                            Nome do projeto
-                        </ProjectTitle>
+                        <div className="flex gap-4 justify-start items-center">
+                            <Button onClick={() => setIsEditable(!isEditable)} icon={isEditable ? <CheckOutlined className="text-lg" /> : <EditOutlined className="text-lg" />} />
+                            {
+                                isEditable ? (
+                                    <Input className="text-2xl font-bold h-12" value={projectTitle} onChange={(e) => setProjectTitle(e.target.value)} />
+                                ) : (
+                                    <ProjectTitle>{projectTitle}</ProjectTitle>
+                                )
+                            }
+                            
+                            
+                        </div>
                         <KanbanColumnsArea>
                             <Column
                                 id="1"
@@ -152,13 +178,7 @@ export default function Board() {
                                 }}
                             />
                         </KanbanColumnsArea>
-                        <Button
-                            icon={<PlusIcon />}
-                            onClick={() => setOpenNewTaskModal(true)}
-                            type="primary"
-                        >
-                            NOVA ATIVIDADE
-                        </Button>
+                        <FloatButton className="w-16 h-16 right-16 bottom-16" icon={<PlusIcon />} onClick={() => setOpenNewTaskModal(true)} type="primary" />
                         <TaskModal
                             open={openNewTaskModal}
                             setOpen={setOpenNewTaskModal}
