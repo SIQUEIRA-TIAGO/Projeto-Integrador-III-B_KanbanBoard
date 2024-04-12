@@ -1,9 +1,9 @@
 'use client'
 import React, { useState } from 'react'
 
-import type { ITaskComponent } from '@/app/Board/_components/Task/types';
+import type { ITaskComponent } from '@/app/board/_components/Task/types';
 import { FaCalendarDay as DateIcon } from "react-icons/fa6";
-import TaskModal from '@/app/Board/_components/TaskModal';
+import TaskModal from '@/app/board/_components/TaskModal';
 import { Draggable } from 'react-beautiful-dnd';
 import {
   TaskContainer,
@@ -11,7 +11,7 @@ import {
   TaskDescription,
   TaskHeader,
   TaskPriority
-} from '@/app/Board/_components/Task/wind';
+} from '@/app/board/_components/Task/wind';
 import { Avatar, Tooltip } from 'antd'
 
 

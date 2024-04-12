@@ -1,15 +1,15 @@
 'use client'
 import React from 'react'
 
-import type { IColumnComponent } from '@/app/Board/_components/Column/types';
+import type { IColumnComponent } from '@/app/board/_components/Column/types';
 import { Droppable } from 'react-beautiful-dnd';
-import Task from '@/app/Board/_components/Task';
+import Task from '@/app/board/_components/Task';
 import {
   ColumnContainer,
   ColumnDescription,
   ColumnRole,
   ColumnTaskList
-} from '@/app/Board/_components/Column/wind'
+} from '@/app/board/_components/Column/wind'
 
 export default function Column(
   {

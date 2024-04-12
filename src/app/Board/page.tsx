@@ -1,10 +1,10 @@
 'use client'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
-import type { ITask } from "@/app/Board/_components/Task/types";
-import TaskModal from "@/app/Board/_components/TaskModal";
-import Column from "@/app/Board/_components/Column";
+import type { ITask } from "@/app/board/_components/Task/types";
+import TaskModal from "@/app/board/_components/TaskModal";
+import Column from "@/app/board/_components/Column";
 import { FaPlus as PlusIcon } from "react-icons/fa";
 import { Button, Input } from "antd";
 import { EditOutlined, CheckOutlined } from "@ant-design/icons"
@@ -16,7 +16,7 @@ import {
     MainContainer,
     PageTitle,
     ProjectTitle
-} from "@/app/Board/wind";
+} from "@/app/board/wind";
 
 export default function Board() {
     const [openNewTaskModal, setOpenNewTaskModal] = useState<boolean>(false)
@@ -71,7 +71,7 @@ export default function Board() {
                 break;
         }
     }
-    
+
     const handleCreateTask = (task: ITask) => {
         setToDo(prev => [...prev, task])
     }
@@ -106,8 +106,8 @@ export default function Board() {
                                     <ProjectTitle>{projectTitle}</ProjectTitle>
                                 )
                             }
-                            
-                            
+
+
                         </div>
                         <KanbanColumnsArea>
                             <Column

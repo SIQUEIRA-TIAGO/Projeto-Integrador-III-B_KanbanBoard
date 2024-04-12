@@ -1,14 +1,14 @@
 'use client'
 import React, { type ChangeEvent } from 'react'
 
-import { ITask } from '@/app/Board/_components/Task/types';
+import { ITask } from '@/app/board/_components/Task/types';
 import type {
     ITaskModalComponent
-} from '@/app/Board/_components/TaskModal/types';
+} from '@/app/board/_components/TaskModal/types';
 import {
     OptionContainer,
     OptionPriorityColor
-} from '@/app/Board/_components/TaskModal/wind';
+} from '@/app/board/_components/TaskModal/wind';
 import locale from 'antd/locale/pt_BR';
 import { v4 } from 'uuid';
 import dayjs from 'dayjs';
