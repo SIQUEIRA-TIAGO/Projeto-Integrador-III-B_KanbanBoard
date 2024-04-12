@@ -27,6 +27,29 @@ export default function Board() {
     const [doing, setDoing] = useState<ITask[]>([])
     const [done, setDone] = useState<ITask[]>([])
 
+    useEffect(() => {
+        const _toDo = localStorage.getItem('toDo')
+        if (_toDo) setToDo(JSON.parse(_toDo))
+
+        const _doing = localStorage.getItem('doing')
+        if (_doing) setDoing(JSON.parse(_doing))
+
+        const _Done = localStorage.getItem('Done')
+        if (_Done) setDone(JSON.parse(_Done))
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('toDo', JSON.stringify(toDo))
+    }, [toDo])
+
+    useEffect(() => {
+        localStorage.setItem('doing', JSON.stringify(doing))
+    }, [doing])
+
+    useEffect(() => {
+        localStorage.setItem('done', JSON.stringify(done))
+    }, [done])
+
     const onDragEnd = ({ destination, source, draggableId, }: DropResult) => {
         const task = [...toDo, ...doing, ...done]
             .find(el => el.id === draggableId)
